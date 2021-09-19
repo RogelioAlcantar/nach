@@ -1,0 +1,28 @@
+package com.example.examen.back.end.servicios;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.example.examen.back.end.entidades.Automovil;
+import com.example.examen.back.end.entidades.EntradaSalida;
+import com.example.examen.back.end.repositorios.AutomovilRepository;
+
+public class AutomovilServiceImple implements AutomovilService{
+
+	@Autowired
+	private AutomovilRepository automovilRepository; 
+	
+	@Override
+	public List<EntradaSalida> reporte() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Automovil getAutomovil(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,25 @@
+package com.example.examen.back.end.servicios;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.example.examen.back.end.entidades.Automovil;
+import com.example.examen.back.end.repositorios.AutomovilRepository;
+
+public class AutomovilServiceImple implements AutomovilService{
+
+	@Autowired
+	private AutomovilRepository automovilRepository; 
+	
+	@Override
+	public List<Automovil> reporte() {
+		return automovilRepository.findAll();
+	}
+
+	@Override
+	public Automovil getAutomovil(Long id) {
+		return automovilRepository.findById(id).orElse(null);
+	}
+
+}

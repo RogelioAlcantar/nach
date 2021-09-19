@@ -1,0 +1,9 @@
+package com.example.examen.back.end.repositorios;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.example.examen.back.end.entidades.Automovil;
+
+public interface AutomovilRepository extends JpaRepository<Automovil, Long>{
+
+}

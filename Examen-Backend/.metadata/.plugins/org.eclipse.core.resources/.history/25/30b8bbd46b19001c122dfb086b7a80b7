@@ -1,0 +1,25 @@
+package com.example.examen.back.end.servicios;
+
+import java.util.List;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import com.example.examen.back.end.entidades.EntradaSalida;
+
+@Service
+public class EntradaSalidaServiceImple implements EntradaSalidaService{
+
+	@Override
+	public List<EntradaSalida> reporte() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResponseEntity<Object> createProducto(EntradaSalida entradaSalida) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,5 @@
+package com.example.examen.back.end.config;
+
+public class SwaggerConfig {
+
+}

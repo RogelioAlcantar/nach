@@ -1,0 +1,14 @@
+package com.example.examen.back.end.servicios;
+
+import java.util.List;
+
+import org.springframework.http.ResponseEntity;
+
+import com.example.examen.back.end.entidades.Automovil;
+import com.example.examen.back.end.entidades.EntradaSalida;
+
+public interface EntradaSalidaService {
+	public abstract int contarES(String placa);
+	public abstract EntradaSalida actualizaSalida(String placa);
+	public abstract ResponseEntity<Object> createEntradaSalida(Automovil automovil);
+}

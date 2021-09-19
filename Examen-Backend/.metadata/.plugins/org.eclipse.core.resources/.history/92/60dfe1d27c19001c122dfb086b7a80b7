@@ -1,0 +1,90 @@
+package com.example.examen.back.end.controladores;
+
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.examen.back.end.entidades.Automovil;
+import com.example.examen.back.end.entidades.EntradaSalida;
+import com.example.examen.back.end.servicios.AutomovilService;
+import com.example.examen.back.end.servicios.EntradaSalidaService;
+
+@RestController
+public class AutomovilController {
+	
+	@Autowired
+	private AutomovilService automovilService;
+	
+	@Autowired
+	private EntradaSalidaService entradaSalidaService;
+	
+	@GetMapping("/reporte/empresa")
+	public List<Automovil> reporteEmpresa(){
+		return automovilService.reporteEmpresa();
+	}
+	
+	@GetMapping("/reporte/residente/{placa}")
+	public Automovil reporteResidente(@PathVariable String placa){
+		return automovilService.reporteResidente(placa);
+	}
+	
+	@PostMapping("/crear/residente")
+	public ResponseEntity<Object> crearResidente(@Validated @RequestBody Automovil automovil){
+		if(automovil.getTipo_auto().equals("R")) {
+			return automovilService.createAutomovil(automovil);
+		}else {
+			return new ResponseEntity<>("El automovil no es residente, favor de verificar", HttpStatus.BAD_REQUEST);
+		}
+		
+	}
+	
+	@PostMapping("/crear/empresa")
+	public ResponseEntity<Object> crearEmpresa(@Validated @RequestBody Automovil automovil){
+		if(automovil.getTipo_auto().equals("E")) {
+			return automovilService.createAutomovil(automovil);
+		}else {
+			return new ResponseEntity<>("El automovil no es de empresa, favor de verificar", HttpStatus.BAD_REQUEST);
+		}
+		
+	}
+	
+	
+	@PostMapping("/crear/entrada/automovil")
+	public ResponseEntity<Object> crearEntrada(@Validated @RequestBody EntradaSalida es){
+		if(es.getAutomovil() == null) {
+			return new ResponseEntity<>("Para generar una entrada debe ir asociada a un automovil", HttpStatus.BAD_REQUEST);
+		}
+		return entradaSalidaService.createEntradaSalida(es);
+	}
+	
+	@GetMapping("/genera/salida/{placa}")
+	public ResponseEntity<Object> contarES(@PathVariable String placa){
+		Automovil auto = automovilService.findAutomovil(placa);
+		EntradaSalida es = entradaSalidaService.salida(placa);
+		if(auto != null && es != null) {
+			if(auto.getTipo_auto().equals("E")) {
+				es.setSalida(new Date());
+				es.setTarifa(0.6);
+				return new ResponseEntity<>(auto, HttpStatus.OK);
+			}else {
+				int veces = entradaSalidaService.contarES(placa);
+				if(veces > 10) {
+					
+					return new ResponseEntity<>(auto, HttpStatus.OK);
+				}else if(veces == 20) {
+					return new ResponseEntity<>(auto, HttpStatus.OK);
+				}
+			}
+		}
+		return new ResponseEntity<>("Salida del auto incorrecta", HttpStatus.BAD_REQUEST);
+	}
+}

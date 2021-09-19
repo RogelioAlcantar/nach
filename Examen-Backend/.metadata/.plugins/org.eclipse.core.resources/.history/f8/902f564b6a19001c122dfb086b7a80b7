@@ -1,0 +1,76 @@
+package com.example.examen.back.end.entidades;
+
+import java.io.Serializable;
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
+
+
+@Entity
+@Table(name = "entradasalida")
+public class EntradaSalida implements Serializable{
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id_entradasalida;
+
+	@Column(length = 30)
+	private String placa;
+	
+	@CreationTimestamp
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date llegada;
+	
+	@CreationTimestamp
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date salida;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Automovil automovil;
+	
+	public Long getId_entradasalida() {
+		return id_entradasalida;
+	}
+
+	public void setId_entradasalida(Long id_entradasalida) {
+		this.id_entradasalida = id_entradasalida;
+	}
+
+	public String getPlaca() {
+		return placa;
+	}
+
+	public void setPlaca(String placa) {
+		this.placa = placa;
+	}
+
+	public Date getLlegada() {
+		return llegada;
+	}
+
+	public void setLlegada(Date llegada) {
+		this.llegada = llegada;
+	}
+
+	public Date getSalida() {
+		return salida;
+	}
+
+	public void setSalida(Date salida) {
+		this.salida = salida;
+	}
+	
+	private static final long serialVersionUID = 1L;
+	
+}

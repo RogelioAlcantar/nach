@@ -1,0 +1,15 @@
+package com.example.examen.back.end.repositorios;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import com.example.examen.back.end.entidades.Automovil;
+import com.example.examen.back.end.entidades.EntradaSalida;
+
+@Repository
+public interface AutomovilRepository extends JpaRepository<Automovil, Long>{
+	
+	@Query("select a from Automovil a where a.tipo_auto = 'E'")
+	public Automovil autoSale(String placas);
+}

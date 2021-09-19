@@ -1,0 +1,10 @@
+package com.example.examen.back.end.servicios;
+
+import java.util.List;
+
+import com.example.examen.back.end.entidades.Automovil;
+
+public interface AutomovilService {
+	public abstract List<Automovil> reporte();
+	public abstract Automovil getAutomovil(Long id);
+}

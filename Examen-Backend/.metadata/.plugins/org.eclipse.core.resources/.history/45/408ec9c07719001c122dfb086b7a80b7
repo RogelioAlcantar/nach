@@ -1,0 +1,44 @@
+package com.example.examen.back.end.controladores;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.examen.back.end.entidades.Automovil;
+import com.example.examen.back.end.entidades.EntradaSalida;
+import com.example.examen.back.end.servicios.AutomovilService;
+import com.example.examen.back.end.servicios.EntradaSalidaService;
+
+@RestController
+public class AutomovilController {
+	
+	@Autowired
+	private AutomovilService automovilService;
+	
+	@Autowired
+	private EntradaSalidaService entradaSalidaService;
+	
+	@GetMapping("/reporte/empresa")
+	public List<Automovil> reporteEmpresa(){
+		return automovilService.reporteEmpresa();
+	}
+	
+	@GetMapping("/reporte/residente/{placa}")
+	public Automovil reporteResidente(@PathVariable String placa){
+		return automovilService.reporteResidente(placa);
+	}
+	
+	
+	@GetMapping("/reporteES")
+	public List<EntradaSalida> reporteES(){
+		return entradaSalidaService.reporteES();
+	}
+	
+	@GetMapping("/salida/{placa}")
+	public int contarES(@PathVariable String placa){
+		return entradaSalidaService.contarES(placa);
+	}
+}

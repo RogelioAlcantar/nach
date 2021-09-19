@@ -1,0 +1,12 @@
+package com.example.examen.back.end.servicios;
+
+import java.util.List;
+
+import org.springframework.http.ResponseEntity;
+
+import com.example.examen.back.end.entidades.EntradaSalida;
+
+public interface EntradaSalidaService {
+	public abstract List<EntradaSalida> reporte(Long id);
+	public abstract ResponseEntity<Object> createProducto(EntradaSalida entradaSalida);
+}

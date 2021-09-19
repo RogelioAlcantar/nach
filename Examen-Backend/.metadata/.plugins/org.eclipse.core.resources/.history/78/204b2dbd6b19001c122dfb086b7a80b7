@@ -1,0 +1,8 @@
+package com.example.examen.back.end.servicios;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class EntradaSalidaServiceImple implements EntradaSalidaService{
+
+}

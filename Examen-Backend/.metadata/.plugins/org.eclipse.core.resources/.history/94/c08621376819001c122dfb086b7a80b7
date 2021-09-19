@@ -1,0 +1,29 @@
+package com.example.examen.back.end.entidades;
+
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = automoviles)
+public class Automovil implements Serializable{
+
+	@Id
+	@GeneratedValue(strategy = )
+	private Long id;
+
+	@NotEmpty
+	private String placa;
+	private String modelo;
+	private Long anio;
+	private String marca;
+	private String tipo_auto;
+	private String color;
+	
+	private static final long serialVersionUID = 1L;
+
+}

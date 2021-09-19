@@ -1,0 +1,5 @@
+package com.example.examen.back.end.repositorios;
+
+public interface AutomovilRepository {
+
+}

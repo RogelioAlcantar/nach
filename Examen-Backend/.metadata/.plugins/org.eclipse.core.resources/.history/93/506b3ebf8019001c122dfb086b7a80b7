@@ -1,0 +1,12 @@
+package com.example.examen.back.end.servicios;
+
+import org.springframework.http.ResponseEntity;
+
+import com.example.examen.back.end.entidades.EntradaSalida;
+
+public interface EntradaSalidaService {
+	public abstract int contarES(String placa);
+	public abstract void actualizaSalida(String placa, EntradaSalida es);
+	public abstract ResponseEntity<Object> createEntradaSalida(EntradaSalida es);
+	public abstract EntradaSalida salida(String placa);
+}

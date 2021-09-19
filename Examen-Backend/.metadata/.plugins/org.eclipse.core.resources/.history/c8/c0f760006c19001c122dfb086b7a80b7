@@ -1,0 +1,29 @@
+package com.example.examen.back.end.servicios;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import com.example.examen.back.end.entidades.EntradaSalida;
+import com.example.examen.back.end.repositorios.EntradaSalidaRepository;
+
+@Service
+public class EntradaSalidaServiceImple implements EntradaSalidaService{
+	
+	@Autowired
+	private EntradaSalidaRepository entradaSalidaRepository;
+	
+	@Override
+	public List<EntradaSalida> reporte() {
+		return entradaSalidaRepository.findAll();
+	}
+
+	@Override
+	public ResponseEntity<Object> createProducto(EntradaSalida entradaSalida) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

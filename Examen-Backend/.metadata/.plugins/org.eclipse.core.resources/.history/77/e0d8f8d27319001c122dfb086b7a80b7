@@ -1,0 +1,12 @@
+package com.example.examen.back.end.servicios;
+
+import java.util.List;
+
+
+import com.example.examen.back.end.entidades.EntradaSalida;
+
+public interface EntradaSalidaService {
+	public abstract List<EntradaSalida> reporteES();
+	public abstract EntradaSalida getEntradaSalida( Long id);
+	public abstract int contarES(String placa);
+}

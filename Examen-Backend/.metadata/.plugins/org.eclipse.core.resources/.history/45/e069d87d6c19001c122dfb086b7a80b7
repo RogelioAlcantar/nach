@@ -1,0 +1,13 @@
+package com.example.examen.back.end.controladores;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.examen.back.end.servicios.AutomovilService;
+
+@RestController
+public class AutomovilController {
+	
+	@Autowired
+	private AutomovilService automovilService;
+}
